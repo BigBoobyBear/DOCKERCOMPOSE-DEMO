@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Docker Compose Demo</title>
+  </head>
+  <body>
+    <h1>lmao</h1>
+    <ul id="coursesContainer"></ul>
+
+    <script type="text/javascript">
+      const url = "http://localhost:5001";
+
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          const courses = data.courses;
+          let courseListContent = "";
+          courses.forEach((c) => {
+            courseListContent += `<li>${c}</li>`;
+          });
+          document.getElementById("coursesContainer").innerHTML =
+            courseListContent;
+        })
+        .catch((err) => console.log(err));
+    </script>
+  </body>
+</html>
